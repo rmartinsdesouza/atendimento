@@ -75,15 +75,13 @@
 			}
 			$this->response('',204);	// If no records "No Content" status
 		}
-		private function setor(){	
-			$result = "teste"//$r->fetch_assoc();
-			$this->response($this->json($result), 200);
-/*			if($this->get_request_method() != "GET"){
+		private function customer(){	
+			if($this->get_request_method() != "GET"){
 				$this->response('',406);
 			}
 			$id = (int)$this->_request['id'];
 			if($id > 0){	
-				$query="SELECT id, descricao FROM `setor` where `id`=$id";
+				$query="SELECT distinct c.customerNumber, c.customerName, c.email, c.address, c.city, c.state, c.postalCode, c.country FROM angularcode_customers c where c.customerNumber=$id";
 				$r = $this->mysqli->query($query) or die($this->mysqli->error.__LINE__);
 				if($r->num_rows > 0) {
 					$result = $r->fetch_assoc();	
@@ -91,7 +89,6 @@
 				}
 			}
 			$this->response('',204);	// If no records "No Content" status
-*/
 		}
 		
 		private function insertCustomer(){
