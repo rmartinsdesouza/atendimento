@@ -1,6 +1,5 @@
-angular
-	.module("listaSetores")
-	.controller("listaSetoresCtrl", listaSetoresCtrl);
+
+app.controller("listaSetoresCtrl", listaSetoresCtrl);
 
 
 	function listaSetoresCtrl($scope, services){

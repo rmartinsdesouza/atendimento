@@ -2,8 +2,8 @@
 
 	<div class="form" ng-controller="listaSetoresCtrl as vm">
 		<div class="panel panel-default">
-			<div class="panel-heading">{{vm.title}}</div>
-			
+			<div class="panel-heading">{{vm.title}}{{$scope.buttonText}}</div>
+			<div><a href="#edit-setor/0" type="button" class="btn btn-primary" >Adicionar</a></div>
 
 				<table ng-show="vm.setores.length > 0" class="table table-striped">
 					<thead>
@@ -15,7 +15,7 @@
 						<tr ng-repeat="obj in vm.setores">
 							<td>{{obj.id}}</td>
 							<td>{{obj.descricao}}</td>
-							<td><a href="">edit</a></td>
+							<td><a href="#/edit-setor/{{obj.id}}">edit</a></td>
 						</tr>
 					</tbody>
 				</table>

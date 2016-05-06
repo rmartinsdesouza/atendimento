@@ -11,5 +11,9 @@ function services($http) {
         return $http.get(serviceBase + 'setores');
     }
    
+    obj.updateSetor = function(){
+        return $http.get(serviceBase + 'setor');
+    }
+   
     return obj;   
 };

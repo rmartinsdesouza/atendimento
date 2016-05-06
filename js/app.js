@@ -1,2 +1,1 @@
-angular
-	.module("listaSetores", ["ngRoute"]);
+var app = angular.module("listaSetores", ["ngRoute"]);
