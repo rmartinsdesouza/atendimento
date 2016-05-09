@@ -10,6 +10,11 @@ function services($http) {
     obj.getSetores = function(){
         return $http.get(serviceBase + 'setores');
     }
+    
+    obj.getSetor = function(setorID){
+        return $http.get(serviceBase + 'setor?id=' + setorID);
+    }
+    
    
     obj.updateSetor = function(){
         return $http.get(serviceBase + 'setor');

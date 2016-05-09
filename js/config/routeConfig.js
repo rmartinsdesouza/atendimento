@@ -12,10 +12,11 @@ app.config(['$routeProvider',
         templateUrl: 'view/edit-setor.html',
         controller: 'editSetorCtrl',
         resolve: {
-          customer: function(services, $route){
+          setor: function(services, $route){
             var setorID = $route.current.params.setorID;
-            return setorID;
-            //return services.getCustomer(setorID);
+            // var resposta = services.getSetor(setorID);
+            // console.log(resposta);
+            return services.getSetor(setorID);
           }
         }
       })
