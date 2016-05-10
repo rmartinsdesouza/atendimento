@@ -19,6 +19,12 @@ function services($http) {
     obj.updateSetor = function(){
         return $http.get(serviceBase + 'setor');
     }
+
+    obj.deleteSetor = function (id) {
+        return $http.delete(serviceBase + 'deleteSetor?id=' + id).then(function (status) {
+            return status.data;
+        });
+    };
    
     return obj;   
 };

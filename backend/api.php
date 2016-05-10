@@ -91,29 +91,29 @@
 			$this->response('',204);	// If no records "No Content" status
 		}
 		
-		private function insertCustomer(){
+		private function insertSetor(){
 			if($this->get_request_method() != "POST"){
 				$this->response('',406);
 			}
 
-			$customer = json_decode(file_get_contents("php://input"),true);
-			$column_names = array('customerName', 'email', 'city', 'address', 'country');
-			$keys = array_keys($customer);
+			$setor = json_decode(file_get_contents("php://input"),true);
+			$column_names = array('descricao', 'Unidade_id');
+			$keys = array_keys($setor);
 			$columns = '';
 			$values = '';
 			foreach($column_names as $desired_key){ // Check the customer received. If blank insert blank into the array.
 			   if(!in_array($desired_key, $keys)) {
 			   		$$desired_key = '';
 				}else{
-					$$desired_key = $customer[$desired_key];
+					$$desired_key = $setor[$desired_key];
 				}
 				$columns = $columns.$desired_key.',';
 				$values = $values."'".$$desired_key."',";
 			}
-			$query = "INSERT INTO angularcode_customers(".trim($columns,',').") VALUES(".trim($values,',').")";
-			if(!empty($customer)){
+			$query = "INSERT INTO `setor`(".trim($columns,',').") VALUES(".trim($values,',').")";
+			if(!empty($setor)){
 				$r = $this->mysqli->query($query) or die($this->mysqli->error.__LINE__);
-				$success = array('status' => "Success", "msg" => "Customer Created Successfully.", "data" => $customer);
+				$success = array('status' => "Success", "msg" => "Customer Created Successfully.", "data" => $setor);
 				$this->response($this->json($success),200);
 			}else
 				$this->response('',204);	//"No Content" status
@@ -136,7 +136,7 @@
 				}
 				$columns = $columns.$desired_key."='".$$desired_key."',";
 			}
-			$query = "UPDATE angularcode_customers SET ".trim($columns,',')." WHERE customerNumber=$id";
+			$query = "UPDATE SETOR SET ".trim($columns,',')." WHERE customerNumber=$id";
 			if(!empty($customer)){
 				$r = $this->mysqli->query($query) or die($this->mysqli->error.__LINE__);
 				$success = array('status' => "Success", "msg" => "Customer ".$id." Updated Successfully.", "data" => $customer);
@@ -145,15 +145,15 @@
 				$this->response('',204);	// "No Content" status
 		}
 		
-		private function deleteCustomer(){
+		private function deleteSetor(){ 
 			if($this->get_request_method() != "DELETE"){
 				$this->response('',406);
 			}
 			$id = (int)$this->_request['id'];
 			if($id > 0){				
-				$query="DELETE FROM angularcode_customers WHERE customerNumber = $id";
+				$query="DELETE FROM `setor` WHERE id = $id";
 				$r = $this->mysqli->query($query) or die($this->mysqli->error.__LINE__);
-				$success = array('status' => "Success", "msg" => "Successfully deleted one record.");
+				$success = array('status' => "Success", "msg" => "Deletado com sucesso!");
 				$this->response($this->json($success),200);
 			}else
 				$this->response('',204);	// If no records "No Content" status
