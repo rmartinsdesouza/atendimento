@@ -13,14 +13,15 @@ app.controller('editSetorCtrl', function ($scope, $rootScope, $location, $routeP
             services.deleteSetor(vm.id);
         };
 
-      $scope.saveSetor = function(setor) {
-      $location.path('#/setores');
-      if (customerID <= 0) {
-          services.insertSetor(setor);
-      }
-      else {
-          // services.updateCustomer(customerID, customer);
-      }
+      $scope.saveSetor = function(vm) {
+        $location.path('/');
+        if (setorID <= 0) {
+            services.insertSetor(vm);
+        }
+        else {
+            services.updateSetor(setorID, vm);
+        }
+      };
 
       $scope.isClean = function() {
         return angular.equals(original, $scope.vm);

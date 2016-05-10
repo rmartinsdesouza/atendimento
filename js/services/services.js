@@ -15,6 +15,18 @@ function services($http) {
         return $http.get(serviceBase + 'setor?id=' + setorID);
     }
     
+    obj.insertSetor = function (setor) {
+    return $http.post(serviceBase + 'insertSetor', setor).then(function (results) {
+        console.log(results);
+        return results;
+    });
+    };
+
+    obj.updateSetor = function (id,customer) {
+        return $http.post(serviceBase + 'updateSetor', {id:id, customer:customer}).then(function (status) {
+            return status.data;
+        });
+    };
    
     obj.updateSetor = function(){
         return $http.get(serviceBase + 'setor');
