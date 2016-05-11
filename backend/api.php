@@ -1,3 +1,4 @@
+
 <?php
  	require_once("Rest.inc.php");
 	
@@ -63,7 +64,7 @@
 			if($this->get_request_method() != "GET"){
 				$this->response('',406);
 			}
-			$query="SELECT id, descricao FROM `setor`";
+			$query="SELECT id, descricao, Unidade_id FROM `setor`";
 			$r = $this->mysqli->query($query) or die($this->mysqli->error.__LINE__);
 
 			if($r->num_rows > 0){
@@ -81,7 +82,7 @@
 			}
 			$id = (int)$this->_request['id'];
 			if($id > 0){	
-				$query="SELECT id, descricao FROM `setor` where id=$id";
+				$query="SELECT id, descricao, Unidade_id FROM `setor` where id=$id";
 				$r = $this->mysqli->query($query) or die($this->mysqli->error.__LINE__);
 				if($r->num_rows > 0) {
 					$result = $r->fetch_assoc();	

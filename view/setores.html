@@ -9,12 +9,14 @@
 					<thead>
 						<th>Id</th>
 						<th>Descrição</th>
+						<th>Unidade</th>
 						<th>Opções</th>
 					</thead>
 					<tbody>
 						<tr ng-repeat="obj in vm.setores">
 							<td>{{obj.id}}</td>
 							<td>{{obj.descricao}}</td>
+							<td>{{obj.Unidade_id}}</td>
 							<td><a href="#/edit-setor/{{obj.id}}">edit</a></td>
 						</tr>
 					</tbody>
