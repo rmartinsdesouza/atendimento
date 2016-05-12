@@ -22,15 +22,12 @@ function services($http) {
     });
     };
 
-    obj.updateSetor = function (id,customer) {
-        return $http.post(serviceBase + 'updateSetor', {id:id, customer:customer}).then(function (status) {
+    obj.updateSetor = function (id,setor) {
+        return $http.post(serviceBase + 'updateSetor', {id:id, setor:setor}).then(function (status) {
             return status.data;
         });
     };
    
-    obj.updateSetor = function(){
-        return $http.get(serviceBase + 'setor');
-    }
 
     obj.deleteSetor = function (id) {
         return $http.delete(serviceBase + 'deleteSetor?id=' + id).then(function (status) {

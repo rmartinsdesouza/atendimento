@@ -19,7 +19,8 @@ app.controller('editSetorCtrl', function ($scope, $rootScope, $location, $routeP
             services.insertSetor(vm);
         }
         else {
-            services.updateSetor(setorID, vm);
+            var retorno = services.updateSetor(setorID, vm);
+            console.log(vm);
         }
       };
 

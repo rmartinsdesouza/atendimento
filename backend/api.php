@@ -119,28 +119,28 @@
 			}else
 				$this->response('',204);	//"No Content" status
 		}
-		private function updateCustomer(){
+		private function updateSetor(){
 			if($this->get_request_method() != "POST"){
 				$this->response('',406);
 			}
-			$customer = json_decode(file_get_contents("php://input"),true);
-			$id = (int)$customer['id'];
-			$column_names = array('customerName', 'email', 'city', 'address', 'country');
-			$keys = array_keys($customer['customer']);
+			$setor = json_decode(file_get_contents("php://input"),true);
+			$id = (int)$setor['id'];
+			$column_names = array('descricao');
+			$keys = array_keys($setor['setor']);
 			$columns = '';
 			$values = '';
 			foreach($column_names as $desired_key){ // Check the customer received. If key does not exist, insert blank into the array.
 			   if(!in_array($desired_key, $keys)) {
 			   		$$desired_key = '';
 				}else{
-					$$desired_key = $customer['customer'][$desired_key];
+					$$desired_key = $setor['setor'][$desired_key];
 				}
 				$columns = $columns.$desired_key."='".$$desired_key."',";
 			}
-			$query = "UPDATE SETOR SET ".trim($columns,',')." WHERE customerNumber=$id";
-			if(!empty($customer)){
+			$query = "UPDATE `SETOR` SET ".trim($columns,',')." WHERE id=$id";			
+			if(!empty($setor)){
 				$r = $this->mysqli->query($query) or die($this->mysqli->error.__LINE__);
-				$success = array('status' => "Success", "msg" => "Customer ".$id." Updated Successfully.", "data" => $customer);
+				$success = array('status' => "Success", "msg" => "Customer ".$id." Updated Successfully.", "data" => $setor);
 				$this->response($this->json($success),200);
 			}else
 				$this->response('',204);	// "No Content" status
